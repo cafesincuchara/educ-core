@@ -31,5 +31,10 @@ public class EscuelaController {
         return ResponseEntity.ok(service.registrar(escuela));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Escuela> actualizarEscuela(@PathVariable UUID id, @RequestBody Escuela escuela){
+        return ResponseEntity.ok(service.modificarEscuelaPorId(id, escuela));
+    }
+
 
 }
