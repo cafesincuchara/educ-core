@@ -46,4 +46,20 @@
             return  repository.findById(id).orElseThrow(()-> new RuntimeException("ID no valido"));
         }
 
+        @Transactional
+        public Escuela modificarEscuelaPorId(UUID id, Escuela escuelaNuevosDatos) {
+
+            Escuela escuelaExistente = repository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("ID no encontrado"));
+
+            escuelaExistente.setCurso(escuelaNuevosDatos.getCurso());
+            escuelaExistente.setEstudiantes(escuelaNuevosDatos.getEstudiantes());
+            escuelaExistente.setProfesores(escuelaNuevosDatos.getProfesores());
+            escuelaExistente.setModalidad(escuelaNuevosDatos.getModalidad());
+            escuelaExistente.setNivel(escuelaNuevosDatos.getNivel());
+            escuelaExistente.setActivo(escuelaNuevosDatos.isActivo());
+
+            return repository.save(escuelaExistente);
+        }
+
     }
