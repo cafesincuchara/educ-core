@@ -4,10 +4,12 @@
     import com.dev.educore.repository.EscuelaRepository;
     import jakarta.transaction.Transactional;
     import lombok.AllArgsConstructor;
+    import org.hibernate.annotations.NotFound;
     import org.springframework.stereotype.Service;
 
     import java.time.LocalDate;
     import java.util.List;
+    import java.util.UUID;
 
     @Service
     @AllArgsConstructor
@@ -37,6 +39,11 @@
         @Transactional
         public List<Escuela> listarEscuelas(){
             return repository.findAll();
+        }
+
+        @Transactional
+        public Escuela encontrarPorIdEscuela(UUID id){
+            return  repository.findById(id).orElseThrow(()-> new RuntimeException("ID no valido"));
         }
 
     }
