@@ -2,6 +2,7 @@ package com.dev.educore.controller;
 
 import com.dev.educore.model.Escuela;
 import com.dev.educore.service.EscuelaService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +34,12 @@ public class EscuelaController {
     }
 
     @PostMapping
-    public ResponseEntity<Escuela> registrarEscuela(@RequestBody Escuela escuela){
+    public ResponseEntity<Escuela> registrarEscuela(@Valid @RequestBody Escuela escuela){
         return ResponseEntity.ok(service.registrar(escuela));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Escuela> actualizarEscuela(@PathVariable UUID id, @RequestBody Escuela escuela){
+    public ResponseEntity<Escuela> actualizarEscuela(@PathVariable UUID id,@Valid @RequestBody Escuela escuela){
         return ResponseEntity.ok(service.modificarEscuelaPorId(id, escuela));
     }
 
