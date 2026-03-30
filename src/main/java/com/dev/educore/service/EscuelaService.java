@@ -4,10 +4,10 @@
     import com.dev.educore.repository.EscuelaRepository;
     import jakarta.transaction.Transactional;
     import lombok.AllArgsConstructor;
-    import org.hibernate.annotations.NotFound;
     import org.springframework.stereotype.Service;
 
     import java.time.LocalDate;
+    import java.util.ArrayList;
     import java.util.List;
     import java.util.UUID;
 
@@ -42,7 +42,7 @@
         }
 
         @Transactional
-        public Escuela encontrarPorIdEscuela(UUID id){
+        public Escuela encontrarEscuelaPorId(UUID id){
             return  repository.findById(id).orElseThrow(()-> new RuntimeException("ID no valido"));
         }
 
@@ -69,6 +69,19 @@
             }
             repository.findById(id).orElseThrow(()-> new RuntimeException("ID no encontrado"));
             repository.deleteById(id);
+        }
+
+        @Transactional
+        public Escuela buscarEscuelaPorProfesor(String profesor){
+            List<Escuela> listaEscuela = repository.findAll();
+
+            return listaEscuela.stream().filter(escuela -> escuela.getProfesores().equalsIgnoreCase(profesor))
+                    .findFirst().orElseThrow(()-> new RuntimeException("No se encontro una escuela con este profesor"));
+        }
+
+        @Transactional
+        public integer contarEscuelas(){
+
         }
 
     }

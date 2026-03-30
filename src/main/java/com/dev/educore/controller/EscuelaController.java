@@ -23,7 +23,7 @@ public class EscuelaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Escuela> buscarEscuelaPorId(@PathVariable UUID id){
-        return ResponseEntity.ok(service.encontrarPorIdEscuela(id));
+        return ResponseEntity.ok(service.encontrarEscuelaPorId(id));
     }
 
     @PostMapping
@@ -36,11 +36,14 @@ public class EscuelaController {
         return ResponseEntity.ok(service.modificarEscuelaPorId(id, escuela));
     }
 
-        @DeleteMapping("/{id}")
-        public ResponseEntity<Void> eliminarEscuelaPorId(@PathVariable UUID id){
-            service.eliminarEscuelaPorId(id);
-            return ResponseEntity.noContent().build();
-        }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarEscuelaPorId(@PathVariable UUID id){
+        service.eliminarEscuelaPorId(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping
+    public
 
 
 }
