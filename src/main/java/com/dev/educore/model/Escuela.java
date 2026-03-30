@@ -30,7 +30,6 @@ public class Escuela {
     @NotNull(message = "El estado activo/inactivo es obligatorio")
     private boolean activo;
 
-    @PastOrPresent(message = "La fecha de creación no puede ser futura")
     private LocalDate fechaCreacion;
 
     @NotBlank(message = "La modalidad (Presencial/Online) es obligatoria")

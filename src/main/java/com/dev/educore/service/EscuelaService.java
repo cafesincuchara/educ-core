@@ -7,6 +7,7 @@
     import org.springframework.stereotype.Service;
 
     import java.time.LocalDate;
+    import java.util.List;
 
     @Service
     @AllArgsConstructor
@@ -31,6 +32,11 @@
             escuelaSave.setNivel(escuela.getNivel());
 
             return repository.save(escuela);
+        }
+
+        @Transactional
+        public List<Escuela> listarEscuelas(){
+            return repository.findAll();
         }
 
     }
