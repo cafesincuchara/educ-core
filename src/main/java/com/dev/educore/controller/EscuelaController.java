@@ -36,5 +36,11 @@ public class EscuelaController {
         return ResponseEntity.ok(service.modificarEscuelaPorId(id, escuela));
     }
 
+        @DeleteMapping("/{id}")
+        public ResponseEntity<Void> eliminarEscuelaPorId(@PathVariable UUID id){
+            service.eliminarEscuelaPorId(id);
+            return ResponseEntity.noContent().build();
+        }
+
 
 }
