@@ -26,6 +26,12 @@ public class EscuelaController {
         return ResponseEntity.ok(service.encontrarEscuelaPorId(id));
     }
 
+    @GetMapping("/profesor/{profesor}")
+    public ResponseEntity<Escuela> buscarEscuelaPorProfesor(@PathVariable String profesor ){
+        Escuela escuelaEncontrada = service.buscarEscuelaPorProfesor(profesor);
+        return ResponseEntity.ok(escuelaEncontrada);
+    }
+
     @PostMapping
     public ResponseEntity<Escuela> registrarEscuela(@RequestBody Escuela escuela){
         return ResponseEntity.ok(service.registrar(escuela));
@@ -41,9 +47,5 @@ public class EscuelaController {
         service.eliminarEscuelaPorId(id);
         return ResponseEntity.noContent().build();
     }
-
-    @PatchMapping
-    public
-
 
 }
