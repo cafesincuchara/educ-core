@@ -29,11 +29,14 @@
             escuelaSave.setProfesores(escuela.getProfesores());
             escuelaSave.setCurso(escuela.getCurso());
             escuelaSave.setActivo(escuela.isActivo());
+
+            //fecha actual
             escuelaSave.setFechaCreacion(LocalDate.now());
+
             escuelaSave.setModalidad(escuela.getModalidad());
             escuelaSave.setNivel(escuela.getNivel());
 
-            return repository.save(escuela);
+            return repository.save(escuelaSave);
         }
 
         @Transactional
