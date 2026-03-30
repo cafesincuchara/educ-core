@@ -62,4 +62,13 @@
             return repository.save(escuelaExistente);
         }
 
+        @Transactional
+        public void eliminarEscuelaPorId(UUID id){
+            if(id == null){
+                throw new RuntimeException("ID no puede ser nulo");
+            }
+            repository.findById(id).orElseThrow(()-> new RuntimeException("ID no encontrado"));
+            repository.deleteById(id);
+        }
+
     }
