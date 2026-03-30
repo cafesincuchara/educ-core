@@ -26,9 +26,10 @@ public class EscuelaController {
         return ResponseEntity.ok(service.encontrarPorIdEscuela(id));
     }
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<Escuela> registrarEscuela(@RequestBody Escuela escuela){
         return ResponseEntity.ok(service.registrar(escuela));
     }
+
 
 }
