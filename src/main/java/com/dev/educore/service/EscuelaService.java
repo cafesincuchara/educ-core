@@ -79,9 +79,4 @@
                     .findFirst().orElseThrow(()-> new RuntimeException("No se encontro una escuela con este profesor"));
         }
 
-        @Transactional
-        public integer contarEscuelas(){
-
-        }
-
     }
